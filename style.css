@@ -1,0 +1,18 @@
+body {
+    color: whitesmoke;
+    background-color: black;
+}
+
+.error {
+    color: red;
+}
+
+.weather-table {
+    border-collapse: collapse;
+    border: 2px solid whitesmoke;
+}
+
+.weather-table-cell {
+    border: 1px solid whitesmoke;
+    padding: 5px;
+}
