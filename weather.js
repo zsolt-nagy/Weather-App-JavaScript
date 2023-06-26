@@ -9,7 +9,7 @@ function getCityEndpoint(cityName) {
 }
 
 function getWeatherEndpoint(latitude, longitude) {
-    return `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York`;
+    return `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=auto`;
 }
 
 function renderCity(cityData) {
@@ -18,7 +18,6 @@ function renderCity(cityData) {
         <p>Latitude: ${cityData.latitude}</p>
         <p>Longitude: ${cityData.longitude}</p>
         <p>Elevation: ${cityData.elevation}</p>
-        <p>Timezone: ${cityData.timezone}</p>
         <p>Country: ${cityData.country}</p>
     `;
 }
@@ -64,7 +63,10 @@ function generate7DayForecast(daily, dailyUnits) {
 }
 
 function renderWeather(weatherData) {
-    weatherSection.innerHTML = generate7DayForecast(weatherData.daily, weatherData.daily_units);
+    weatherSection.innerHTML = `
+        <section>Timezone: ${weatherData.timezone}</section>
+        ${generate7DayForecast(weatherData.daily, weatherData.daily_units)}
+    `;
 }
 
 function fetchWeather(cityData) {
