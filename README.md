@@ -1,5 +1,7 @@
 # Weather app 
 
+Try it out here: https://zsolt-nagy.github.io/Weather-App-JavaScript/
+
 ## Endpoints
 
 1. https://geocoding-api.open-meteo.com/v1/search?name=Dallas
