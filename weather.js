@@ -108,6 +108,12 @@ function fetchWeather(cityData) {
         .then(renderWeather); // response is passed as the first argument of renderWeather
 }
 
+function displayError(message) {
+    errorField.innerText = message;
+    weatherSection.innerHTML = "";
+    citySection.innerHTML = "";
+}
+
 function fetchCity(cityName) {
     fetch(getCityEndpoint(cityName))
         .then((x) => x.json())
@@ -120,9 +126,7 @@ function fetchCity(cityName) {
                 // 2. Fetch weather data
                 fetchWeather(cityData);
             } else {
-                errorField.innerText = `Location ${cityName} does not exist.`;
-                weatherSection.innerHTML = "";
-                citySection.innerHTML = "";
+                displayError(`Location ${cityName} does not exist.`);
             }
         });
 }
@@ -137,7 +141,7 @@ function formSubmitted(event) {
         cityInputField.value = "";
         fetchCity(city);
     } else {
-        errorField.innerText = "Enter a valid city name.";
+        displayError("Enter a valid city name.");
     }
 }
 
