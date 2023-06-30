@@ -119,9 +119,10 @@ function fetchCity(cityName) {
                 renderCity(cityData);
                 // 2. Fetch weather data
                 fetchWeather(cityData);
-                console.log(cityData);
             } else {
                 errorField.innerText = `Location ${cityName} does not exist.`;
+                weatherSection.innerHTML = "";
+                citySection.innerHTML = "";
             }
         });
 }
